@@ -1,0 +1,78 @@
+import random
+print("Cows and Bulls game!")
+guess_count = 0
+guessed = False
+def game(g_c, gss):
+    num = input("Please enter a four digit integer (between 1000 and 9999) of your choice here: ")
+    random_number = random.randint(1000, 9999)
+    random_number = str(random_number)
+    cow_count = 0
+    bull_count = 0
+    loop_count = 0
+    num_list = []
+    for index in num:
+        num_list.append(index)
+    if int(num) == int(random_number):
+        g_c += 1
+        print("You guessed it! And it only took you " + str(g_c) + " trie(s)!")
+    elif int(num) != int(random_number):
+        for index in num_list:
+            if int(index) == int(random_number[loop_count]):
+                cow_count += 1
+            elif loop_count == 0:
+                if int(index) == int(random_number[1]):
+                    bull_count += 1
+                if int(index) == int(random_number[2]):
+                    if int(index) != int(random_number[1]) and int(random_number[3]):
+                        bull_count += 1
+                if int(index) == int(random_number[3]):
+                    if int(index) != int(random_number[1]) and int(random_number[2]):
+                        bull_count += 1
+            elif loop_count == 1:
+                if int(index) == int(random_number[0]):
+                    bull_count += 1
+                if int(index) == int(random_number[2]):
+                    if int(index) != int(random_number[0]) and int(random_number[3]):
+                        bull_count += 1
+                if int(index) == int(random_number[3]):
+                    if int(index) != int(random_number[2]) and int(random_number[0]):
+                        bull_count += 1
+            elif loop_count == 2:
+                if int(index) == int(random_number[1]):
+                    bull_count += 1
+                if int(index) == int(random_number[0]):
+                    if int(index) != int(random_number[1]) and int(random_number[3]):
+                        bull_count += 1
+                if int(index) == int(random_number[3]):
+                    if int(index) != int(random_number[0]) and int(random_number[1]):
+                        bull_count += 1
+            elif loop_count == 3:
+                if int(index) == int(random_number[1]):
+                    bull_count += 1
+                if int(index) == int(random_number[2]):
+                    if int(index) != int(random_number[0]) and int(random_number[1]):
+                        bull_count += 1
+                if int(index) == int(random_number[0]):
+                    if int(index) != int(random_number[2]) and int(random_number[1]):
+                        bull_count += 1
+
+            loop_count += 1
+        print("You got " + str(cow_count) + " cows, and " + str(bull_count) + " bulls!")
+        print("The number you had to guess was " + str(random_number))
+
+
+while guessed == False:
+    game(guess_count, guessed)
+
+
+
+
+
+
+
+
+
+
+
+
+
